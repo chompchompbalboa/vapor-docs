@@ -67,14 +67,12 @@ Because all of your assets will be served via S3 / CloudFront, you should always
 Another option is to use Laravel's asset helper to construct your base URL, then construct subsequent URLs using relative paths.
 
 ```php
-  <head>
+<head>
     <base href="{{ asset('') }}">
-  </head>
-  <body>
-    ...
+</head>
+<body>
     <img src="img.jpg">
-    ...
-  </body>
+</body>
 ```
 
 ### Code Splitting / Dynamic Imports
