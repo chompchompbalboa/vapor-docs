@@ -56,13 +56,24 @@ environments:
 
 During deployment, Vapor will automatically extract all of the assets in your Laravel project's `public` directory and upload them to S3. In addition, Vapor will create a AWS CloudFront (CDN) distribution to distribute these assets efficiently around the world.
 
+On subsequent deployments, only the assets that have changed will be uploaded to S3, while unchanged assets will be copied over from the previous deployment.
+
 Because all of your assets will be served via S3 / CloudFront, you should always generate URLs to these assets using Laravel's `asset` helper. Vapor injects an `ASSET_URL` environment variable which Laravel's `asset` helper will use when constructing your URLs:
 
 ```php
 <img src="{{ asset('img.jpg') }}">
 ```
 
-On subsequent deployments, only the assets that have changed will be uploaded to S3, while unchanged assets will be copied over from the previous deployment.
+Another option is to use Laravel's asset helper to set your base URL, then construct subsequent URLs using relative paths:
+
+```php
+<head>
+    <base href="{{ asset('') }}">
+</head>
+<body>
+    <img src="img.jpg">
+</body>
+```
 
 ### Code Splitting / Dynamic Imports
 
