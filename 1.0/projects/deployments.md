@@ -64,7 +64,7 @@ Because all of your assets will be served via S3 / CloudFront, you should always
 <img src="{{ asset('img.jpg') }}">
 ```
 
-Another option is to use Laravel's asset helper to construct your base URL, then construct subsequent URLs using relative paths.
+Another option is to use Laravel's asset helper to set your base URL, then construct subsequent URLs using relative paths:
 
 ```php
 <head>
